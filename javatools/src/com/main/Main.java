@@ -5,7 +5,8 @@ import com.files.util.FileUtil;
 public class Main {
 
 	public static void main(String[] args) {
-		FileUtil.traverseFolder("");
+		FileUtil.creatFile("/Users/ln/ln/Learn/new/new2");
+//		FileUtil.deleteFile("/Users/ln/ln/Learn/new");
 
 	}
 
