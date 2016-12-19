@@ -1,7 +1,9 @@
 package com.files.util;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.PrintWriter;
 
 public class FileUtil {
@@ -86,5 +88,45 @@ public class FileUtil {
         System.out.println("file does not exist!");
     }
 	}
+	
+	/**
+	 * * file filter
+	 * @param path the path of folder
+	 * @param type filter condition 
+	 * @return filter files
+	 */
+	public static File[] fileTypeFilter(String path, String type){
+		File file = new File(path);
+    if (file.exists()) {
+    	File[] files =file.listFiles(new MyFileFilter(type));  
+  	  for(File eachFile:files){  
+  	      System.out.println(eachFile.getName());  
+  	  }
+  	  return files;
+    } 
+    else {
+        System.out.println("file does not exist!");
+        return null;
+    }
+		
+		
+		  
+	}
+	
+	/**
+	 * my file filter 
+	 * @author ln
+	 *
+	 */
+	static class MyFileFilter implements FileFilter{  
+    private String type;  
+    public MyFileFilter(String type){  
+        this.type = type;  
+    }  
+		@Override
+		public boolean accept(File file) {
+			return file.getName().endsWith("."+type);
+		}  
+}
 	
 }
